@@ -1,0 +1,61 @@
+# ─── Secrets & Credentials ───────────────────────────
+# NEVER commit these - Azure credentials, API keys, 
+# connection strings for genomic data storage
+.env
+*.env
+.env.*
+secrets/
+credentials/
+*.key
+*.pem
+*.pfx
+
+# Azure CLI cached tokens and credentials
+.azure/
+
+# Azure deployment outputs that may contain secrets
+deployment-outputs.json
+parameters.*.json
+
+# ─── VS Code ──────────────────────────────────────────
+.vscode/
+*.code-workspace
+
+# ─── OS Generated Files ───────────────────────────────
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ─── Python ───────────────────────────────────────────
+# Used in Phase 4 for Azure Function code
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# ─── Terraform (Phase 2+) ─────────────────────────────
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+
+# ─── Genomic Data ─────────────────────────────────────
+# Real patient genomic files should NEVER be in GitHub
+# even de-identified - use Azure Blob Storage instead
+*.bam
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+# VCF files with real data - sample-data/ folder only 
+# contains synthetic examples
+*.vcf.gz

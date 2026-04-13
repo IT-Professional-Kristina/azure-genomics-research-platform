@@ -6,7 +6,7 @@ This project simulates the backend cloud infrastructure for a
 HIPAA-compliant genomic data integration platform, designed to 
 support Epic EHR interfaces in an academic research health system 
 environment — modeled after real-world requirements at institutions 
-like UT Health San Antonio.
+of leading academic healthcare research systems.
 
 It demonstrates how raw genomic sequencing data (FASTQ, BAM, VCF) 
 moves from a sequencing lab through a secure cloud pipeline, gets 

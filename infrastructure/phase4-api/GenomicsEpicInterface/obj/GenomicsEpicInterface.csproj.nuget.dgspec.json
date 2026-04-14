@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[2.22.0, )"
             },
+            "Microsoft.Azure.Cosmos": {
+              "target": "Package",
+              "version": "[3.38.1, )"
+            },
             "Microsoft.Azure.Functions.Worker": {
               "target": "Package",
               "version": "[1.21.0, )"

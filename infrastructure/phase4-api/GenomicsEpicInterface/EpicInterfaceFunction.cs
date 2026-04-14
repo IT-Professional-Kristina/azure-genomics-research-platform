@@ -83,7 +83,7 @@ namespace GenomicsEpicInterface
         public int CosmicOccurrences { get; set; }
         public string ClinvarSignificance { get; set; } = string.Empty;
         public string OncokbLevel { get; set; } = string.Empty;
-        public string Therapies { get; set; } = string.Empty;
+        public List<string> Therapies { get; set; } = new();
         public double TumorAlleleFrequency { get; set; }
         public string EpicOrderId { get; set; } = string.Empty;
     }

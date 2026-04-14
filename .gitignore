@@ -59,3 +59,19 @@ terraform.tfvars
 # VCF files with real data - sample-data/ folder only 
 # contains synthetic examples
 *.vcf.gz
+# Build output
+obj/
+bin/
+*.user
+
+# Azure artifacts
+local.settings.json
+.azure/
+
+# VS/VS Code
+.vs/
+.vscode/
+
+# NuGet
+*.nupkg
+packages/

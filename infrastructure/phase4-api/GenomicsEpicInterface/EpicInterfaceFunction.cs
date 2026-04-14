@@ -11,10 +11,11 @@
 // Runtime: .NET 8 isolated worker model
 // ─────────────────────────────────────────────────────────────
 
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
+using System.Net;
+using System.Text.Json;
 
 namespace GenomicsEpicInterface
 {
@@ -29,9 +30,9 @@ namespace GenomicsEpicInterface
         }
 
         [Function("ProcessGenomicVariants")]
-        public IActionResult Run(
+        public async Task<HttpResponseData> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post")]
-            HttpRequest req)
+            HttpRequestData req)
         {
             _logger.LogInformation(
                 "Genomics Epic Interface triggered: {time}",
@@ -89,38 +90,50 @@ namespace GenomicsEpicInterface
                 {
                     new
                     {
-                        reference = $"ServiceRequest/{variant.EpicOrderId}"
+                        reference =
+                            $"ServiceRequest/{variant.EpicOrderId}"
                     }
                 },
                 conclusion = conclusion,
                 result = new[]
                 {
-                    new { code = "48018-6", display = "Gene studied",
+                    new { code = "48018-6",
+                          display = "Gene studied",
                           value = variant.Gene },
-                    new { code = "48005-3", display = "Amino acid change",
+                    new { code = "48005-3",
+                          display = "Amino acid change",
                           value = variant.AminoAcidChange },
-                    new { code = "53037-8", display = "Clinical significance",
+                    new { code = "53037-8",
+                          display = "Clinical significance",
                           value = variant.ClinvarSignificance },
-                    new { code = "81258-6", display = "Allele frequency",
+                    new { code = "81258-6",
+                          display = "Allele frequency",
                           value = $"{variant.TumorAlleleFrequency:P0}" }
                 }
             };
 
             _logger.LogInformation(
-                "FHIR report built for {gene} {change} - " +
-                "Order: {orderId}",
+                "FHIR report built for {gene} {change} Order: {orderId}",
                 variant.Gene,
                 variant.AminoAcidChange,
                 variant.EpicOrderId);
 
-            return new OkObjectResult(new
+            var response = req.CreateResponse(HttpStatusCode.OK);
+            response.Headers.Add("Content-Type", "application/json");
+
+            var result = new
             {
                 status = "success",
                 variantId = variant.Id,
                 epicOrderId = variant.EpicOrderId,
                 fhirReport = fhirReport,
                 nextStep = "POST to Epic FHIR R4 /DiagnosticReport"
-            });
+            };
+
+            await response.WriteStringAsync(
+                JsonSerializer.Serialize(result));
+
+            return response;
         }
     }
 

@@ -11,8 +11,8 @@
       Include="Microsoft.Azure.Functions.Worker"
       Version="1.21.0" />
     <PackageReference
-      Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore"
-      Version="1.2.1" />
+      Include="Microsoft.Azure.Functions.Worker.Extensions.Http"
+      Version="3.1.0" />
     <PackageReference
       Include="Microsoft.Azure.Functions.Worker.Extensions.CosmosDB"
       Version="4.3.0" />

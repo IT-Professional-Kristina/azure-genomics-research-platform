@@ -1,5 +1,31 @@
 [
   {
+    "name": "Dashboard",
+    "scriptFile": "GenomicsEpicInterface.dll",
+    "entryPoint": "GenomicsEpicInterface.DashboardFunction.Run",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "req",
+        "direction": "In",
+        "type": "httpTrigger",
+        "authLevel": "Anonymous",
+        "methods": [
+          "get"
+        ],
+        "properties": {}
+      },
+      {
+        "name": "$return",
+        "type": "http",
+        "direction": "Out"
+      }
+    ]
+  },
+  {
     "name": "ProcessGenomicVariants",
     "scriptFile": "GenomicsEpicInterface.dll",
     "entryPoint": "GenomicsEpicInterface.EpicInterfaceFunction.Run",

@@ -1,16 +1,3 @@
-// ─────────────────────────────────────────────────────────────
-// Epic Genomics Interface Function
-// Project: Azure Genomic Research Data Integration Platform
-//
-// Clinical Context:
-// Bridges genomics platform and Epic EHR via FHIR R4.
-// Reads variants with reportedToEpic=false from Cosmos DB
-// and formats them as FHIR R4 DiagnosticReport resources.
-//
-// Trigger: HTTP (dev) / Cosmos DB change feed (production)
-// Runtime: .NET 8 isolated worker model
-// ─────────────────────────────────────────────────────────────
-
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
@@ -90,8 +77,7 @@ namespace GenomicsEpicInterface
                 {
                     new
                     {
-                        reference =
-                            $"ServiceRequest/{variant.EpicOrderId}"
+                        reference = $"ServiceRequest/{variant.EpicOrderId}"
                     }
                 },
                 conclusion = conclusion,

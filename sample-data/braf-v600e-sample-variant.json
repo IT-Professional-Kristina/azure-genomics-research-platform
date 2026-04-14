@@ -1,0 +1,33 @@
+{
+  "_comment": "SYNTHETIC DATA ONLY - not real patient data",
+  "_note": "BRAF V600E mutation in cutaneous melanoma",
+  "_clinical_significance": "OncoKB Level 1 - FDA-approved therapy available",
+
+  "id": "S001-chr7-140453136",
+  "sampleId": "S001",
+  "patientMrn": "MRN-789456",
+  "chromosome": "chr7",
+  "position": 140453136,
+  "referenceAllele": "A",
+  "alternateAllele": "T",
+  "gene": "BRAF",
+  "transcript": "ENST00000288602",
+  "aminoAcidChange": "V600E",
+  "variantClassification": "Missense_Mutation",
+  "cosmicId": "COSV57014367",
+  "cosmicOccurrences": 75842,
+  "clinvarSignificance": "Pathogenic",
+  "oncokbLevel": "1",
+  "therapies": [
+    "Vemurafenib",
+    "Dabrafenib",
+    "Trametinib"
+  ],
+  "tumorAlleleFrequency": 0.42,
+  "readDepth": 847,
+  "epicOrderId": "ORD-2026-78456",
+  "reportedToEpic": false,
+  "studyId": "IRB-2026-042",
+  "tumorType": "Cutaneous melanoma",
+  "createdAt": "2026-04-13T21:44:00Z"
+}
